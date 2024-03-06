@@ -1,0 +1,131 @@
+@import "../variabili";
+
+.title {
+  text-align: center;
+  margin: 20px 0;
+}
+.btnForm {
+  margin-top: 20px;
+  @include btn-page;
+}
+.errorText {
+  text-align: center;
+  color: red;
+}
+.error-text {
+  color: red;
+}
+.form-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  input {
+    width: 50%;
+  }
+}
+.invalid {
+  border: 2px solid rgba(255, 17, 0, 1);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  button {
+    @include btn-page;
+  }
+}
+
+.admirPage {
+  display: flex;
+  flex-wrap: wrap;
+  .admirCol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: white;
+    border: 2px solid $primaryColor;
+    border-radius: 5px;
+    padding: 40px 30px;
+    margin: 10px;
+  }
+}
+
+.table {
+  margin-top: 20px;
+  text-align: center;
+  .icon {
+    color: $fourthColor;
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+}
+.buttonConfirm {
+  @include btn-page;
+}
+
+.successfetch {
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 250px;
+  margin: 0;
+  padding: 0;
+  li {
+    padding: 1px 20px;
+    display: flex;
+  }
+}
+
+.flexInput {
+  display: flex;
+}
+
+.images {
+  margin-left: 20px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-evenly;
+  button {
+    @include btn-page;
+  }
+}
+
+.approvalComment {
+  margin-top: 40px;
+  h2 {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  h4 {
+    text-align: center;
+  }
+  .commentRow {
+    margin: 20px 0;
+    border-bottom: 1px solid #000;
+  }
+}
+
+.badgeReview {
+  background: red;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

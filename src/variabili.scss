@@ -1,0 +1,43 @@
+$primaryColor: #ffc024;
+$secondColor: #03ffb7;
+$fourthColor: #33312c;
+$gradientColor: linear-gradient(
+  132deg,
+  rgba(51, 49, 44, 1) 14%,
+  rgba(255, 192, 36, 1) 100%
+);
+$disabledColor: rgba(255, 192, 36, 0.5);
+
+@mixin btn-page {
+  padding: 0 5px;
+  background: $primaryColor;
+  border-radius: 5px;
+  color: white;
+  transition: 0.6s;
+  &:hover {
+    transform: scale(1.1);
+    color: $fourthColor;
+  }
+  &:disabled {
+    background: $disabledColor;
+    border-radius: 5px;
+    color: white;
+    &:hover {
+      transform: scale(1);
+    }
+  }
+}
+
+@mixin btn-util {
+  color: #fff;
+  background: $primaryColor;
+  border-radius: 100%;
+  width: 40px;
+  height: 40px;
+  transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  &:hover {
+    color: $primaryColor;
+    background: #fff;
+    border: 2px solid $primaryColor;
+  }
+}

@@ -1,0 +1,46 @@
+@import "../variabili.scss";
+.primoBanner {
+  text-align: center;
+  border: 2px solid $fourthColor;
+  margin-bottom: 10vh;
+  background: url(../image/photo-banner.jpg) no-repeat center / cover;
+  .bannerTesto {
+    margin: 5vw;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-width: 50px 2px;
+    opacity: 0.6;
+    h2 {
+      margin: 2vw;
+      font-weight: bold;
+      color: #000000;
+    }
+  }
+}
+
+#allRecipes {
+  margin-top: 10vh;
+  button {
+    width: 100%;
+    max-width: 900px;
+    height: 20vh;
+    padding: 0;
+    border: 3px solid $primaryColor;
+    border-radius: 5px;
+    background: url(../image/image-home-allRecipes.jpg) no-repeat center / cover;
+    transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    p {
+      background: $primaryColor;
+      color: #fff;
+      margin: 0;
+      transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    &:hover {
+      transform: scale(1.1);
+      border: 3px solid $fourthColor;
+      p {
+        background: $fourthColor;
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+@import "../variabili.scss";
+
+#allRecipes {
+  .flexTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+}
+
+.cardFilter {
+  background: $primaryColor;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  .btnCard {
+    @include btn-page;
+    text-decoration: none;
+    padding: 5px;
+  }
+  &:hover {
+    scale: 1.1;
+    background: $fourthColor;
+  }
+}
+
+.badgeReviewCard {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 50px;
+  right: 15px;
+  svg {
+    color: yellow;
+    margin-left: 5px;
+  }
+}
+
+.filterButton {
+  border: none;
+  background: transparent;
+  border-radius: 100%;
+  svg {
+    color: #fff;
+    background: $primaryColor;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    &:hover {
+      color: $primaryColor;
+      background: #fff;
+      border: 2px solid $primaryColor;
+    }
+  }
+}
+.offCanvas {
+  background: $primaryColor;
+}
+
+.formCheck {
+  display: flex;
+  align-items: center;
+  input {
+    margin-right: 10px;
+  }
+  input:checked {
+    background-color: $fourthColor;
+    border-color: white;
+  }
+}

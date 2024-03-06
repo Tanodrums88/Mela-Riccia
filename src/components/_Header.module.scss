@@ -1,0 +1,221 @@
+@import "../variabili";
+.header {
+  background-color: $primaryColor;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: auto;
+  .headerContent {
+    .headerFirstSection {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    .headerLogo {
+      padding: 0 15px;
+      img {
+        height: 100px;
+        width: 100%;
+        transition: 0.6s;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+    .headerUl {
+      width: 100%;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0;
+      margin-bottom: 0;
+      li {
+        display: inline-block;
+        margin: 0 10px;
+        padding: 5px 0px;
+        a {
+          text-decoration: none;
+          display: block;
+          color: white;
+          &:hover {
+            color: $fourthColor;
+          }
+        }
+        a.active {
+          color: $fourthColor;
+          font-weight: bold;
+        }
+      }
+      .dropdownHeader {
+        width: auto;
+        max-width: 120px;
+        height: 20px;
+        color: white;
+        transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+        &:hover {
+          color: $fourthColor;
+        }
+        ul {
+          display: none;
+          padding: 0;
+          z-index: 0;
+          li {
+            background: $primaryColor;
+            width: auto;
+            padding: 0;
+            margin: 0;
+            height: 0;
+          }
+        }
+        ul.ulShow {
+          animation: upDown 0.5s ease-out;
+          position: relative;
+          z-index: 12;
+          top: 0;
+          display: flex;
+          flex-direction: column;
+          li {
+            height: auto;
+            padding: 5px;
+          }
+        }
+      }
+    }
+    .header-search {
+      margin-bottom: 25px;
+      padding-right: 20px;
+      .input {
+        height: 25px;
+        width: 250px;
+      }
+    }
+    #risultati {
+      display: flex;
+    }
+  }
+  .boxAdminMode {
+    border: 2px solid white;
+    background: $fourthColor;
+    border-radius: 5px;
+    margin: auto 5px;
+  }
+}
+
+@media (min-width: 769px) {
+  .headerUl li a {
+    transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    &:hover {
+      color: $fourthColor;
+    }
+  }
+  #tutte_ricette_header {
+    padding-left: 6px;
+  }
+}
+@media (max-width: 768px) {
+  .header {
+    .headerContent {
+      justify-content: flex-start;
+      .headerLogo {
+        img {
+          width: 80px;
+        }
+      }
+      .headerUl {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: absolute;
+        padding-left: 1px;
+        top: 150px;
+        background: $primaryColor;
+        width: 100%;
+        //height: 100vh;
+        height: 0;
+        overflow: hidden;
+        transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+        li {
+          position: relative;
+          width: 100%;
+          padding: 0;
+          border-bottom: dotted 2px $fourthColor;
+          a {
+            &:hover {
+              color: $fourthColor;
+              border: none;
+            }
+          }
+        }
+        .dropdownHeader {
+          width: 100%;
+          max-width: none;
+          margin: 0 10px;
+          height: auto;
+          ul {
+            width: 100%;
+            z-index: 1;
+            position: relative;
+            animation: upDownResponsive 0.5s;
+            top: 14px;
+            transition: all 2.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+          }
+        }
+        #tutte_ricette_header {
+          padding-left: 5px;
+          border-top: dotted 2px $fourthColor;
+        }
+        #contorni_header {
+          border-top: dotted 2px $fourthColor;
+        }
+      }
+      .ulOpen.headerUl {
+        height: 65vh;
+        //margin-top: 15px;
+        padding: 0 0 35px 0;
+      }
+      .header-search {
+        .input {
+          width: 180px;
+        }
+      }
+    }
+  }
+
+  .iconHmg {
+    height: 50px;
+    width: 50px;
+    span {
+      height: 1px;
+      width: 30px;
+      background: $fourthColor;
+      position: relative;
+      display: block;
+      margin-top: 7px;
+      transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+  }
+  .iconHmg.open {
+    span:nth-child(1) {
+      transform: rotate(30deg) translateY(9px);
+    }
+    span:nth-child(2) {
+      visibility: hidden;
+      transition: 0s;
+    }
+    span:nth-child(3) {
+      transform: rotate(-30deg) translateY(-9px);
+    }
+  }
+}

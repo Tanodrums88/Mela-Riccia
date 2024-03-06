@@ -1,0 +1,23 @@
+@import "../../variabili.scss";
+
+#presentation {
+  text-align: justify;
+  .col2 {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    img {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+    }
+  }
+  .col1 {
+    background-color: $fourthColor;
+    color: #fff;
+    padding: 3vw;
+    border-radius: 5px;
+  }
+}

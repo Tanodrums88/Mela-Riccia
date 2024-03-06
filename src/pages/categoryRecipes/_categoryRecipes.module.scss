@@ -1,0 +1,43 @@
+@import "../../variabili.scss";
+
+#category {
+  h1 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 5vh;
+  }
+  .card {
+    box-shadow: $fourthColor 3px 3px 20px;
+    .imgCard {
+      height: 290px;
+      width: 100%;
+    }
+    .cardTitle {
+      text-align: center;
+      background: $primaryColor;
+      border-radius: 5px 5px 0 0;
+      color: #fff;
+    }
+    .ingredientsTitle {
+      font-weight: bold;
+      margin: 0 0 0 15px;
+    }
+    ul {
+      list-style: circle;
+      column-count: 2;
+      column-gap: 25px;
+      li {
+        line-height: 30px;
+      }
+    }
+    .btnCard {
+      @include btn-page;
+      text-decoration: none;
+      color: #fff;
+      padding: 5px;
+    }
+    .cardFooter {
+      font-size: smaller;
+    }
+  }
+}

@@ -1,0 +1,372 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #e0e0eb;
+  color: #000000;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.header {
+  background-color: #ffb703;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  height: auto;
+}
+.header .headerContent {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.header .headerContent .headerLogo {
+  padding: 15px;
+}
+.header .headerContent .headerLogo img {
+  height: 45px;
+  width: 50px;
+  transition: 0.6s;
+}
+.header .headerContent .headerLogo img:hover {
+  transform: scale(1.2);
+  border-radius: 100%;
+}
+.header .headerContent .headerUl {
+  display: flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+}
+.header .headerContent .headerUl li {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 10px 5px;
+}
+.header .headerContent .headerUl li a {
+  text-decoration: none;
+  display: block;
+  color: white;
+}
+.header .headerContent .headerUl li a:hover {
+  color: #553d01;
+}
+.header .headerContent .headerUl .dropdownHeader {
+  width: auto;
+  max-width: 110px;
+  height: 20px;
+  color: white;
+  transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.header .headerContent .headerUl .dropdownHeader:hover {
+  color: #553d01;
+}
+.header .headerContent .headerUl .dropdownHeader ul {
+  display: none;
+  padding: 0;
+  z-index: 0;
+}
+.header .headerContent .headerUl .dropdownHeader ul li {
+  background: #ffb703;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  height: 0;
+}
+.header .headerContent .headerUl .dropdownHeader ul.ulShow {
+  animation: upDown 0.5s ease-out;
+  position: relative;
+  z-index: 1;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+.header .headerContent .headerUl .dropdownHeader ul.ulShow li {
+  height: auto;
+  padding: 5px;
+}
+.header .headerContent .header-search input {
+  height: 25px;
+}
+.header .headerContent #risultati {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  position: absolute;
+}
+.header .headerContent #risultati ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  position: absolute;
+}
+.header .headerContent #risultati ul a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
+}
+.header .headerContent #risultati ul li {
+  background: white;
+  list-style: none;
+  width: 189px;
+  font-size: 10px;
+}
+.header .headerContent #risultati ul li:hover {
+  background: gray;
+}
+.header .headerContent #risultati ul li .img-list {
+  height: 23px;
+  width: 23px;
+  margin-right: 2px;
+}
+.header .headerContent .reset {
+  background: transparent;
+  border: 1px solid #553d01;
+  border-radius: 100%;
+  height: 30px;
+  width: 30px;
+  margin: 0 5px;
+}
+
+@media (min-width: 769px) {
+  .headerUl li a {
+    transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .headerUl li a:hover {
+    color: #553d01;
+  }
+  #tutte_ricette_header {
+    padding-left: 6px;
+  }
+}
+@media (max-width: 768px) {
+  .header .headerContent .headerUl {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    padding-left: 1px;
+    top: 58px;
+    background: #ffb703;
+    width: 100%;
+    height: 100vh;
+    height: 0;
+    overflow: hidden;
+    transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .header .headerContent .headerUl li {
+    position: relative;
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: dotted 2px #553d01;
+  }
+  .header .headerContent .headerUl li a:hover {
+    color: #553d01;
+    border: none;
+  }
+  .header .headerContent .headerUl .dropdownHeader {
+    width: 100%;
+    max-width: none;
+    margin: 0 10px;
+    height: auto;
+  }
+  .header .headerContent .headerUl .dropdownHeader ul {
+    width: 100%;
+    z-index: 1;
+    position: relative;
+    animation: upDownResponsive 0.5s;
+    top: 14px;
+    transition: all 2.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .header .headerContent .headerUl #tutte_ricette_header {
+    padding-left: 5px;
+    border-top: dotted 2px #553d01;
+  }
+  .header .headerContent .headerUl #contorni_header {
+    border-top: dotted 2px #553d01;
+  }
+  .header .headerContent .ulOpen.headerUl {
+    height: 50vh;
+    padding-top: 13px;
+  }
+  .header .headerContent .header-search {
+    padding-left: 10px;
+    padding-right: 0px;
+  }
+  .iconHmg {
+    height: 50px;
+    width: 50px;
+    margin-left: 20px;
+    padding-top: 10px;
+  }
+  .iconHmg span {
+    height: 1px;
+    width: 30px;
+    background: #553d01;
+    position: relative;
+    display: block;
+    margin-top: 7px;
+    transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  .open.iconHmg span:nth-child(1) {
+    transform: rotate(30deg) translateY(9px);
+  }
+  .open span:nth-child(3) {
+    transform: rotate(-30deg) translateY(-9px);
+  }
+  .open span:nth-child(2) {
+    visibility: hidden;
+    transition: 0s;
+  }
+  .headerLogo {
+    display: flex;
+    width: 80px;
+  }
+  .headerLogo img {
+    border-radius: 100%;
+  }
+}
+@keyframes upDown {
+  0% {
+    top: -129px;
+    opacity: 0;
+  }
+  100% {
+    top: 0px;
+    opacity: 1;
+  }
+}
+@keyframes upDownResponsive {
+  0% {
+    top: -21px;
+    opacity: 0;
+  }
+  100% {
+    top: 14px;
+    opacity: 1;
+  }
+}
+#home-pulsanti {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+#home-pulsanti h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.home-ricette {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  border: solid 20px #ffb703;
+  border-radius: 10px;
+  background: url(https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80) no-repeat center/cover;
+}
+
+#homeButtons {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 50px 0;
+}
+#homeButtons .section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #ffb703;
+  border-radius: 5px;
+  width: 150px;
+  height: 150px;
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+#homeButtons .section:hover {
+  transform: scale(1.2);
+}
+#homeButtons .section p {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  background-color: #ffb703;
+  color: white;
+}
+#homeButtons .sectionPrimi {
+  background: url(../../image/icon/primi-photo.jpg) no-repeat center/cover;
+}
+#homeButtons .sectionSecondi {
+  background: url(../../image/icon/secondi-photo.jpg) no-repeat center/cover;
+}
+#homeButtons .sectionDolci {
+  background: url(../../image/icon/dolci-photo.jpg) no-repeat center/cover;
+}
+#homeButtons .sectionContorni {
+  background: url(../../image/icon/contorni-photo.jpg) no-repeat center/cover;
+}
+
+@media (max-width: 768px) {
+  .home-ricette {
+    flex-direction: column;
+  }
+}
+.accordion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  margin: 50px 0;
+}
+.accordion .accordionItem {
+  width: 100%;
+  background: transparent;
+  border: none;
+}
+.accordion .accordionItem .accordionHead button {
+  background: #ffb703;
+  border: 1px solid #553d01;
+  font-weight: bold;
+  color: white;
+}
+.accordion .accordionItem .accordionList {
+  padding: 0;
+}
+.accordion .accordionItem .accordionList li {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  margin: 5px 0;
+  background-color: #ffb703;
+  border: solid 1px #553d01;
+  border-radius: 10px 10px 0px 0px;
+}
+.accordion .accordionItem .accordionList li:hover img,
+.accordion .accordionItem .accordionList li:hover p {
+  transform: scale(1.1);
+}
+.accordion .accordionItem .accordionList li p {
+  color: white;
+  padding-left: 30px;
+  font-weight: bold;
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.accordion .accordionItem .accordionList li img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px 10px 0px 0px;
+  transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}/*# sourceMappingURL=App.css.map */

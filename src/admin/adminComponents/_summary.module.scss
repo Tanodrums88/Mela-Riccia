@@ -1,0 +1,32 @@
+@import "../../variabili.scss";
+
+.summary {
+  h1 {
+    margin-bottom: 30px;
+  }
+  .row {
+    border: 2px solid $fourthColor;
+    box-shadow: 3px 1px 5px $fourthColor;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 5px;
+  }
+  img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  .buttonGroup {
+    margin-top: 3vh;
+    display: flex;
+    justify-content: space-evenly;
+    button {
+      @include btn-page;
+    }
+  }
+  .successfetch {
+    text-align: center;
+    color: green;
+  }
+}

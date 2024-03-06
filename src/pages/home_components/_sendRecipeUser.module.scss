@@ -1,0 +1,38 @@
+@import "../../variabili.scss";
+
+.sendRecipeUserContainer {
+  .row {
+    .colText {
+      background: $fourthColor;
+      color: #fff;
+      text-align: justify;
+      padding: 40px 20px;
+      border-radius: 5px;
+      button {
+        @include btn-page;
+        &:hover {
+          transform: scale(1);
+        }
+      }
+    }
+    .colCard {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button {
+        @include btn-page;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .sendRecipeUserContainer {
+    .row {
+      flex-direction: column;
+      .colCard {
+        margin-top: 20px;
+      }
+    }
+  }
+}

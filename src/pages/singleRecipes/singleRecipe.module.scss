@@ -1,0 +1,113 @@
+@import "../../variabili.scss";
+
+.singleRecipe {
+  margin-bottom: 5vh;
+  h1,
+  h5 {
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+  }
+  .singleRecipeRow {
+    margin-top: 50px;
+    .colImg {
+      text-align: center;
+      margin-bottom: 30px;
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 5px;
+      }
+    }
+    .colIngredients {
+      background: url(../../image/carta.jpg);
+      ul {
+        list-style: none;
+        p {
+          font-weight: bold;
+          padding-top: 20px;
+          text-align: left;
+          margin: 0;
+        }
+        li {
+          border-bottom: 1px solid black;
+        }
+      }
+    }
+  }
+  .containerBottom {
+    margin-top: 50px;
+    .description {
+      text-align: center;
+      line-height: 35px;
+    }
+    h3 {
+      margin: 20px 0;
+      text-align: center;
+      font-weight: bold;
+    }
+    .preparation {
+      line-height: 35px;
+      list-style: circle;
+    }
+  }
+}
+
+.sendComment {
+  background: $fourthColor;
+  color: #fff;
+  text-align: center;
+  margin-top: 50px;
+  padding: 50px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+.bodyModalComment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  input {
+    margin: 10px 0;
+    width: 50%;
+  }
+  textarea {
+    width: 100%;
+    height: 25vh;
+  }
+}
+.btnComment {
+  @include btn-page;
+}
+.btnComment:disabled,
+.btnComment[disabled] {
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}
+.comment {
+  margin-top: 60px;
+  .cardComment {
+    text-align: center;
+    background: transparent;
+    color: black;
+  }
+}
+.iconStar {
+  color: yellow;
+}
+.iconStarNone {
+  color: gray;
+}
+
+.valutationModal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  select {
+    width: 25vw;
+  }
+}
