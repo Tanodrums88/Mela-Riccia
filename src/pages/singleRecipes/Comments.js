@@ -1,6 +1,5 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
-//import * as Icon from 'react-bootstrap-icons';
 
 import useFetchComments from '../../util_hook/useFetchComments';
 import useStarsCreate from '../../util_hook/useStarsCreate';
@@ -9,7 +8,10 @@ import classes from './singleRecipe.module.scss';
 
 function Comments(props) {
 
-  const { star } = useStarsCreate();
+  const Star = (num) => {
+    const { star } = useStarsCreate(num);
+    return star;
+  }
 
   const recipeName = props.recipeName.toString();
 
@@ -25,41 +27,6 @@ function Comments(props) {
     return (obj.approved === true)
   })
 
-  // const stars = (num) => {
-  //   let star
-  //   if (num === '1') {
-  //     star = <>
-  //       <Icon.StarFill className={classes.iconStar} />
-  //       <Icon.StarFill className={classes.iconStarNone} /><Icon.StarFill className={classes.iconStarNone} /><Icon.StarFill className={classes.iconStarNone} /><Icon.StarFill className={classes.iconStarNone} />
-  //     </>
-  //   } else if (num === '2') {
-  //     star = <>
-  //       <Icon.StarFill className={classes.iconStar} /><Icon.StarFill className={classes.iconStar} />
-  //       <Icon.StarFill className={classes.iconStarNone} /><Icon.StarFill className={classes.iconStarNone} /><Icon.StarFill className={classes.iconStarNone} />
-  //     </>
-  //   } else if (num === '3') {
-  //     star = <>
-  //       <Icon.StarFill className={classes.iconStar} /><Icon.StarFill className={classes.iconStar} /><Icon.StarFill className={classes.iconStar} />
-  //       <Icon.StarFill className={classes.iconStarNone} /><Icon.StarFill className={classes.iconStarNone} />
-  //     </>
-  //   } else if (num === '4') {
-  //     star = <>
-  //       <Icon.StarFill className={classes.iconStar} /><Icon.StarFill className={classes.iconStar} /><Icon.StarFill className={classes.iconStar} />
-  //       <Icon.StarFill className={classes.iconStar} /><Icon.StarFill className={classes.iconStarNone} />
-  //     </>
-  //   } else if (num === '5') {
-  //     star = <>
-  //       <Icon.StarFill className={classes.iconStar} /><Icon.StarFill className={classes.iconStar} /><Icon.StarFill className={classes.iconStar} />
-  //       <Icon.StarFill className={classes.iconStar} /><Icon.StarFill className={classes.iconStar} />
-  //     </>
-  //   } else {
-  //     star = <>
-  //       <Icon.StarFill className={classes.iconStarNone} /><Icon.StarFill className={classes.iconStarNone} /><Icon.StarFill className={classes.iconStarNone} /><Icon.StarFill className={classes.iconStarNone} /><Icon.StarFill className={classes.iconStarNone} />
-  //     </>
-  //   }
-  //   return star
-  // }
-
   let content;
 
   if (commentRecipeApproved.length === 0) {
@@ -69,7 +36,7 @@ function Comments(props) {
       {commentRecipeApproved.map((el, index) => (
         <Col style={{ padding: '12px' }} key={index}>
           <Card className={classes.cardComment}>
-            <Card.Header>{star(el.valutation)}</Card.Header>
+            <Card.Header>{Star(el.valutation)}</Card.Header>
             <Card.Body>
               <Card.Title>{el.user}</Card.Title>
               <Card.Text>{el.review}</Card.Text>
