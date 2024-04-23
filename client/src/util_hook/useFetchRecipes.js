@@ -11,7 +11,8 @@ export default function useFetchRecipes() {
     useEffect(() => {
         (
             async function () {
-                const url = process.env.REACT_APP_DATABASEURL_RECIPES;
+                const url = "http://localhost:5000/recipes";
+                // url back-end get = process.env.REACT_APP_DATABASEURL_RECIPES;
                 try {
                     setIsLoading(true);
                     const response = await fetch(url);
