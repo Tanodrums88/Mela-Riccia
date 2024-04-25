@@ -1,12 +1,11 @@
 const fs = require('fs');
 const patch = require('path');
+const Recipe = require('./recipes.mongo');
 
 const url = patch.join(__dirname, '..', 'data', 'recipes.json');
 
-let recipes = [];
-
-async function loadRecipesData() {
-    fs.readFile(url, 'utf8', (err, data) => {
+function loadRecipesData() {
+    fs.readFile(url, 'utf8', async (err, data) => {
         if (err) {
             throw new Error(err);
         }
@@ -14,16 +13,49 @@ async function loadRecipesData() {
             const recipesData = JSON.parse(data);
             const convert = Object.values(recipesData)
             convert.forEach((item) => {
-                recipes.push(item)
+                //data.push(item)
+                return saveRecipes(item);
             })
-
-            console.log(`${recipes.length} ricette trovate`);
-            return recipes
-            // console.log(recipes.map((el) => { return el.name }));
         } catch (err) {
             console.log('Error data');
+        } finally {
+            const countRecipesFound = (await getAllRecipes()).length;
+            console.log(`${countRecipesFound} ricette trovate`);
+            return countRecipesFound
         }
     })
 }
 
-module.exports = { loadRecipesData, recipes: recipes };
+async function getAllRecipes() {
+    return await Recipe.find({}, { '_id': 0, '__v': 0 });
+};
+
+async function saveRecipes(recipe) {
+    try {
+        await Recipe.updateOne({
+            name: recipe.name,
+            category: recipe.category,
+            sub_category: recipe.sub_category,
+            cooked: recipe.cooked,
+            description: recipe.description,
+            preparation: recipe.preparation,
+            ingredients: recipe.ingredients,
+            image: recipe.image
+        }, {
+            name: recipe.name,
+            category: recipe.category,
+            sub_category: recipe.sub_category,
+            cooked: recipe.cooked,
+            description: recipe.description,
+            preparation: recipe.preparation,
+            ingredients: recipe.ingredients,
+            image: recipe.image
+        }, {
+            upsert: true,
+        });
+    } catch (err) {
+        console.log(`Could not save recipe ${err}`);
+    };
+};
+
+module.exports = { loadRecipesData, getAllRecipes };

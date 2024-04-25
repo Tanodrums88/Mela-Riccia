@@ -1,7 +1,7 @@
-const { recipes } = require('../models/recipes.model');
+const { getAllRecipes } = require('../models/recipes.model');
 
-function getAllRecipes(req, res) {
-    return res.status(200).json(recipes)
+async function httpGetAllRecipes(req, res) {
+    return res.status(200).json(await getAllRecipes());
 };
 
-module.exports = { getAllRecipes };
+module.exports = { httpGetAllRecipes };
