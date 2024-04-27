@@ -26,7 +26,7 @@ export default function useFetchRecipes() {
 
                     for (const key in data) {
                         ricettario.push({
-                            id: key,
+                            id: data[key].id,
                             name: data[key].name,
                             cooked: data[key].cooked,
                             image: data[key].image,

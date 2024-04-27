@@ -31,7 +31,7 @@ const Summary = (props) => {
         preparation: preparation
     }
 
-    const url = 'https://react-http-88-default-rtdb.europe-west1.firebasedatabase.app/ricettario.json';
+    const url = 'http://localhost:5000/recipes';
 
     async function addRecipeHandler() {
         setIsLoading(true);

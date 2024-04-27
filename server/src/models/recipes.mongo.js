@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const recipesSchema = new mongoose.Schema({
+    id: {
+        type: Number,
+        require: true,
+        default: 0
+    },
     name: {
         type: String,
         require: true

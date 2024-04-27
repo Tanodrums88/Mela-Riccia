@@ -14,7 +14,7 @@ function ModalDelete(props) {
     const itemName = props.select.name;
     const itemId = props.select.id;
 
-    const url = `https://react-http-88-default-rtdb.europe-west1.firebasedatabase.app/ricettario/${itemId}.json`
+    const url = `http://localhost:5000/recipes/${itemId}`
 
     async function deleteRecipe() {
         setIsLoading(true);
