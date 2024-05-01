@@ -1,6 +1,6 @@
 const fs = require('fs');
 const patch = require('path');
-const Recipe = require('./recipes.mongo');
+const RecipeDb = require('./recipes.mongo');
 
 const url = patch.join(__dirname, '..', 'data', 'recipes.json');
 
@@ -17,23 +17,23 @@ function loadRecipesData() {
                 return saveRecipes(item);
             })
         } catch (err) {
-            console.log('Error data');
+            console.log('Error data' + err);
         } finally {
             const countRecipesFound = (await getAllRecipes()).length;
-            console.log(`${countRecipesFound} ricette trovate`);
+            console.log(`${countRecipesFound} recipes found`);
             return countRecipesFound
         }
     })
 };
 
 async function getAllRecipes() {
-    return await Recipe.find({}, { '_id': 0, '__v': 0 }).sort({ 'id': 1 });
+    return await RecipeDb.find({}, { '_id': 0, '__v': 0 }).sort({ 'id': 1 });
 };
 
 const DEFAULT_ID = 0;
 
 async function getLatestIdNumber() {
-    const latestId = await Recipe
+    const latestId = await RecipeDb
         .findOne()
         .sort('-id')
     if (!latestId) {
@@ -45,24 +45,50 @@ async function getLatestIdNumber() {
 async function insertNewRecipe(recipe) {
     const newId = await getLatestIdNumber() + 1;
 
-    const newLaunch = Object.assign(recipe, { id: newId });
-    await saveRecipes(newLaunch);
+    const newRecipe = Object.assign(recipe, { id: newId });
+    await saveRecipes(newRecipe);
 };
 
 async function recipePresenceCheck(recipeId) {
-    return await Recipe.findOne({ id: recipeId })
+    return await RecipeDb.findOne({ id: recipeId })
 };
 
 async function recipeDeletion(recipeId) {
-    const deletion = await Recipe.findOneAndDelete({
-        id: recipeId
-    });
-    return deletion.ok === 1;
+    try {
+        await RecipeDb.findOneAndDelete({
+            id: recipeId
+        });
+    } catch (err) {
+        console.log(`the recipe has not been deleted in the database. Error: ${err}`);
+    };
 };
+
+async function recipeUpdate(recipeId, update) {
+    try {
+        await RecipeDb.findOneAndUpdate({
+            id: recipeId
+        }, {
+            id: update.id,
+            name: update.name,
+            category: update.category,
+            sub_category: update.sub_category,
+            cooked: update.cooked,
+            description: update.description,
+            preparation: update.preparation,
+            ingredients: update.ingredients,
+            image: update.image
+        }, {
+            upsert: true
+        });
+    } catch (err) {
+        console.log(`The recipe has not been changed in the database. Error: ${err}`);
+    };
+};
+
 
 async function saveRecipes(recipe) {
     try {
-        await Recipe.findOneAndUpdate({
+        await RecipeDb.findOneAndUpdate({
             id: recipe.id,
             name: recipe.name,
             category: recipe.category,
@@ -90,4 +116,4 @@ async function saveRecipes(recipe) {
     };
 };
 
-module.exports = { loadRecipesData, getAllRecipes, insertNewRecipe, recipePresenceCheck, recipeDeletion };
+module.exports = { loadRecipesData, getAllRecipes, insertNewRecipe, recipePresenceCheck, recipeDeletion, recipeUpdate };

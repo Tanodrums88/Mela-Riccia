@@ -107,7 +107,7 @@ export default function ModalEdit(props) {
         preparation: preparation
     }
 
-    const url = `https://react-http-88-default-rtdb.europe-west1.firebasedatabase.app/ricettario/${itemId}.json`;
+    const url = `http://localhost:5000/recipes/${itemId}`
 
     const formHandler = async (e) => {
         e.preventDefault();

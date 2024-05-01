@@ -1,5 +1,4 @@
-const { getAllRecipes, insertNewRecipe, recipePresenceCheck, recipeDeletion } = require('../models/recipes.model');
-const Recipe = require('../models/recipes.mongo');
+const { getAllRecipes, insertNewRecipe, recipePresenceCheck, recipeDeletion, recipeUpdate } = require('../models/recipes.model');
 
 async function httpGetAllRecipes(req, res) {
     return res.status(200).json(await getAllRecipes());
@@ -14,35 +13,40 @@ async function httpPostNewRecipe(req, res) {
         });
     };
     await insertNewRecipe(newRecipe);
+    console.log(`The ${newRecipe.name} recipe has been added to the database`);
     return res.status(201).json(newRecipe);
 };
 
 async function httpDeleteRecipe(req, res) {
     const recipeId = Number(req.params.id);
-    console.log(recipeId);
     const checkRecipe = await recipePresenceCheck(recipeId);
     if (!checkRecipe) {
+        console.log("Recipe not found");
         return res.status(404).json({
             error: "Recipe not found"
         });
     };
-
     await recipeDeletion(recipeId);
-    // const recipeDeletionData = await recipeDeletion(recipeId);
-    // if (recipeDeletionData) {
-
+    console.log(`The recipe has been eliminated to the database`);
     return res.status(200).json({
-        ok: true
+        delete: true
     });
-    // } else {
-    //     return res.status(400).json({
-    //         error: "Recipe not deleted"
-    //     });
-    // }
-    // if (!recipeDeletionData) {
-    //     
-    // };
-
 };
 
-module.exports = { httpGetAllRecipes, httpPostNewRecipe, httpDeleteRecipe };
+async function httpPutRecipe(req, res) {
+    const recipeId = Number(req.params.id);
+    const checkRecipe = await recipePresenceCheck(recipeId);
+    if (!checkRecipe) {
+        console.log("Recipe not found");
+        return res.status(404).json({
+            error: "Recipe not found"
+        });
+    };
+    await recipeUpdate(recipeId, req.body);
+    console.log(`The ${req.body.name} recipe has been modified correctly`);
+    return res.status(200).json({
+        update: true
+    })
+};
+
+module.exports = { httpGetAllRecipes, httpPostNewRecipe, httpDeleteRecipe, httpPutRecipe };
