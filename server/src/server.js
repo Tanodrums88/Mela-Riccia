@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const app = require('./app');
 
 const { loadRecipesData } = require('./models/recipes.model');
+const { getAllReviews } = require('./models/reviews.model');
 
 const PORT = 5000;
 
@@ -22,6 +23,7 @@ mongoose.connection.on('error', (err) => {
 async function startServer() {
     await mongoose.connect(URL_DATABASE);
     await loadRecipesData();
+    await getAllReviews();
 }
 
 server.listen(PORT, () => {
