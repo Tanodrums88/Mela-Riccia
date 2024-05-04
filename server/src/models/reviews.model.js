@@ -23,6 +23,40 @@ async function insertNewReview(review) {
     await saveReview(newReview);
 };
 
+async function reviewPresenceCheck(reviewId) {
+    return await ReviewsDb.findOne({ id: reviewId });
+};
+
+async function reviewDeletion(reviewId) {
+    try {
+        await ReviewsDb.findOneAndDelete({
+            id: reviewId
+        });
+    } catch (err) {
+        console.log(`the review has not been deleted in the database. Error: ${err}`);
+    };
+};
+
+async function reviewApproved(reviewId, update) {
+    try {
+        await ReviewsDb.findOneAndUpdate({
+            id: reviewId
+        }, {
+            id: update.id,
+            recipeName: update.recipeName,
+            review: update.review,
+            user: update.user,
+            date: update.date,
+            approved: update.approved,
+            valutation: update.valutation
+        }, {
+            upsert: true
+        });
+    } catch (err) {
+        console.log(`The recipe has not been changed in the database. Error: ${err}`);
+    };
+};
+
 async function saveReview(review) {
     try {
         await ReviewsDb.findOneAndUpdate({
@@ -49,4 +83,4 @@ async function saveReview(review) {
     };
 };
 
-module.exports = { getAllReviews, insertNewReview };
+module.exports = { getAllReviews, insertNewReview, reviewPresenceCheck, reviewDeletion, reviewApproved };

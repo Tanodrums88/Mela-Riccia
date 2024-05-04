@@ -13,7 +13,7 @@ function ModalApprovalComment(props) {
     const [isError, setIsError] = useState(null);
 
     const itemId = props.select.id;
-    const itemName = props.select.name;
+    const itemName = props.select.recipeName;
     const itemUser = props.select.user;
     const itemValutation = props.select.valutation;
     const itemDate = props.select.date;
@@ -28,7 +28,7 @@ function ModalApprovalComment(props) {
         star = 'stelle'
     }
 
-    const url = `https://react-http-88-default-rtdb.europe-west1.firebasedatabase.app/comments/${itemId}.json`;
+    const url = `http://localhost:5000/reviews/${itemId}`
 
     const commentApproval = {
         approved: true,

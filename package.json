@@ -1,0 +1,18 @@
+{
+  "name": "mela-riccia",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "watch": "concurrently 'npm:server' 'npm:client'",
+    "test": "cd server && npm run test && cd client && npm run test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

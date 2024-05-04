@@ -17,9 +17,7 @@ function CommentsPresent() {
     const [isApproval, setIsApproval] = useState(false);
     const [isSelect, setIsSelect] = useState(undefined);
 
-    const url = 'https://react-http-88-default-rtdb.europe-west1.firebasedatabase.app/comments.json'
-
-    const { commetsApi, isLoading, error } = useFetchComments(url);
+    const { commetsApi, isLoading, error } = useFetchComments();
 
 
     const totalReview = commetsApi.map((e) => e)
@@ -53,7 +51,7 @@ function CommentsPresent() {
                 <tbody>
                     {commetsApi.toReversed().map((e) => (
                         <tr key={e.id}>
-                            <td>{e.name}</td>
+                            <td>{e.recipeName}</td>
                             <td>{e.user}</td>
                             <td>{e.valutation}</td>
                             <td>{e.date}</td>

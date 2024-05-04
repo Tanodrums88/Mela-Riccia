@@ -47,26 +47,21 @@ function SendCommentHandler({ recipe }) {
         }
     }, [valutation, useNameIsValid, reviewIsValid])
 
-
-
-
-    const url = `https://react-http-88-default-rtdb.europe-west1.firebasedatabase.app/comments.json`;
+    const url = "http://localhost:5000/reviews";
 
     async function sendComment() {
 
         var data = new Date();
-        var gg, mm, aaaa, Hh, Mm;
+        var gg, mm, aaaa;
         gg = data.getDate() + "/";
         mm = data.getMonth() + 1 + "/";
         aaaa = data.getFullYear();
-        Hh = data.getHours() + ":";
-        Mm = data.getMinutes(2);
-        const date = gg + mm + aaaa + ' alle ore ' + Hh + Mm;
+        const date = `Recensito il ${gg}${mm}${aaaa}`;
 
         const comment = {
-            name: name.toString(),
+            recipeName: name.toString(),
             user: userNameRef.current.value,
-            valutation: valutation,
+            valutation: +valutation,
             review: reviewRef.current.value,
             approved: false,
             date: date

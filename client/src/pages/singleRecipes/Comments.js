@@ -15,12 +15,10 @@ function Comments(props) {
 
   const recipeName = props.recipeName.toString();
 
-  const url = 'https://react-http-88-default-rtdb.europe-west1.firebasedatabase.app/comments.json'
-
-  const { commetsApi } = useFetchComments(url);
+  const { commetsApi } = useFetchComments();
 
   const commentRecipeSelect = commetsApi.filter(obj => {
-    return (obj.name === recipeName)
+    return (obj.recipeName === recipeName)
   })
 
   const commentRecipeApproved = commentRecipeSelect.filter(obj => {

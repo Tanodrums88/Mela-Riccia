@@ -8,12 +8,10 @@ function BadgeReviews(props) {
 
     const recipeName = props.name;
 
-    const url = 'https://react-http-88-default-rtdb.europe-west1.firebasedatabase.app/comments.json'
-
-    const { commetsApi } = useFetchComments(url);
+    const { commetsApi } = useFetchComments();
 
     const commentRecipeSelect = commetsApi.filter(obj => {
-        return (obj.name === recipeName)
+        return (obj.recipeName === recipeName)
     })
 
     const commentRecipeApproved = commentRecipeSelect.filter(obj => {
@@ -42,11 +40,11 @@ function BadgeReviews(props) {
     let mediaReview;
 
     if (!media) {
-        mediaReview = '0'
+        mediaReview = 0
     }
 
     if (media) {
-        mediaReview = media
+        mediaReview = media.toFixed(1)
     }
 
     return (

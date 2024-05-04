@@ -14,7 +14,7 @@ function ModalDeleteComment(props) {
     const itemName = props.select.user;
     const itemId = props.select.id;
 
-    const url = `https://react-http-88-default-rtdb.europe-west1.firebasedatabase.app/comments/${itemId}.json`
+    const url = `http://localhost:5000/reviews/${itemId}`
 
     async function deleteRecipe() {
         setIsLoading(true);
@@ -22,7 +22,7 @@ function ModalDeleteComment(props) {
         try {
             const response = await fetch(url, { method: 'DELETE' });
             if (!response.ok) {
-                throw new Error('An error occurred while deleting the recipe');
+                throw new Error('An error occurred while deleting the review');
             }
             setIsDelete(true);
             return response.json();
@@ -57,10 +57,10 @@ function ModalDeleteComment(props) {
         content = <SpinnerLoading />
     }
     if (isDelete) {
-        content = <h1 className={classes.successfetch}>Ricetta eliminata con successo!</h1>
+        content = <h1 className={classes.successfetch}>Recensione eliminata con successo!</h1>
     }
     if (isError) {
-        content = <ErrorPage message="C'è stato un problema durante la cancellazione della ricetta." />
+        content = <ErrorPage message="C'è stato un problema durante la cancellazione della recensione." />
     }
 
     return (

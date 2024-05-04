@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 
-export default function useFetchComments(url) {
+export default function useFetchComments() {
 
     const [commetsApi, setCommetsApi] = useState([])
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+
+    const url = "http://localhost:5000/reviews";
 
     useEffect(() => {
         (
@@ -22,8 +24,8 @@ export default function useFetchComments(url) {
 
                     for (const key in data) {
                         comments.push({
-                            id: key,
-                            name: data[key].name,
+                            id: data[key].id,
+                            recipeName: data[key].recipeName,
                             user: data[key].user,
                             review: data[key].review,
                             valutation: data[key].valutation,
