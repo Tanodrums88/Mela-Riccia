@@ -1,9 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const recipesRouter = require('./routers/recipes.router');
 const reviewsRouter = require('./routers/reviews.router');
 
 const app = express();
+
+app.use(helmet());
 
 app.use(cors({
     origin: "http://localhost:3000"
