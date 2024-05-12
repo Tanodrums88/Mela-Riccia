@@ -1,4 +1,4 @@
-const { getAllRecipes, insertNewRecipe, recipePresenceCheck, recipeDeletion, recipeUpdate } = require('../models/recipes.model');
+const { getAllRecipes, insertNewRecipe, recipePresenceCheck, recipeDeletion, recipeUpdate } = require('../../models/recipes/recipes.model');
 
 async function httpGetAllRecipes(req, res) {
     return res.status(200).json(await getAllRecipes());

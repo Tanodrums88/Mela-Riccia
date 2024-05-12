@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 
 const app = require('./app');
 
-const { loadRecipesData } = require('./models/recipes.model');
-const { getAllReviews } = require('./models/reviews.model');
+const { loadRecipesData } = require('./models/recipes/recipes.model');
+const { getAllReviews } = require('./models/reviews/reviews.model');
 
 require('dotenv').config();
 

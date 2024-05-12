@@ -17,9 +17,7 @@ const Admin = () => {
     const [currentIsShow, setCurrentIsShow] = useState(false);
     const [commentsShow, setCommentsShow] = useState(false);
 
-    const url = 'https://react-http-88-default-rtdb.europe-west1.firebasedatabase.app/comments.json'
-
-    const { commetsApi } = useFetchComments(url);
+    const { commetsApi } = useFetchComments();
 
     const unapprovedReviewsFilter = commetsApi.filter(obj => {
         return (obj.approved === false)

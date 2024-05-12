@@ -1,4 +1,4 @@
-const { getAllReviews, insertNewReview, reviewPresenceCheck, reviewDeletion, reviewApproved } = require('../models/reviews.model');
+const { getAllReviews, insertNewReview, reviewPresenceCheck, reviewDeletion, reviewApproved } = require('../../models/reviews/reviews.model');
 
 async function httpGetAllReviews(req, res) {
     return res.status(200).json(await getAllReviews());

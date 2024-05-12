@@ -108,11 +108,11 @@ function ListHeader() {
                     >Tutte le Ricette
                     </NavLink></li>
                 <li onClick={() => setHamburgenIsOpen(false)}><Link onClick={handleScroll}>Contatti</Link></li>
-                <li onClick={() => setHamburgenIsOpen(false)}>{!userAuth ? <Link to={'/Auth'}><Icon.LockFill /></Link> : <Link to={'/Admin'}>Admin</Link>}</li>
-                {userAuth && <Logout />}
+                {/* <li onClick={() => setHamburgenIsOpen(false)}>{!userAuth ? <Link to={'http://localhost:5000/auth/google'}><Icon.LockFill /></Link> : <Link to={'/Admin'}>Admin</Link>}</li>
+                {userAuth && <Logout />} */}
             </ul>
         </>
-    )
+    )//<Link to={'/Auth'}><Icon.LockFill /></Link> // creare funzione get e aggiungerlo al pulsante login
 }
 
 export default ListHeader;

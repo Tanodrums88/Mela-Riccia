@@ -2,7 +2,7 @@ const fs = require('fs');
 const patch = require('path');
 const RecipeDb = require('./recipes.mongo');
 
-const url = patch.join(__dirname, '..', 'data', 'recipes.json');
+const url = patch.join(__dirname, '..', '..', 'data', 'recipes.json');
 
 function loadRecipesData() {
     fs.readFile(url, 'utf8', async (err, data) => {

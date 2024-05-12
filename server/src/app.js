@@ -1,8 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
-const recipesRouter = require('./routers/recipes.router');
-const reviewsRouter = require('./routers/reviews.router');
+const recipesRouter = require('./routers/recipes/recipes.router');
+const reviewsRouter = require('./routers/reviews/reviews.router');
 
 const app = express();
 
@@ -21,8 +21,8 @@ module.exports = app;
 
 //COSE DA FARE
 
-// IMPOSTARE AUTENTIFICAZIONE USER CON IL BACK-END INSIEME A MONGODB
-// CANCELLARE TUTTE LE DIPENDENZE SU FIREBASE ED ELIMINARE IL DATABASE
+// IMPOSTARE AUTENTIFICAZIONE USER CON IL BACK-END
+// CANCELLARE TUTTE LE DIPENDENZE SU FIREBASE
 
 // OPERAZIONI FATTE
 
