@@ -1,7 +1,6 @@
-import { Fragment, useState, useEffect, useMemo } from 'react';
+import { Fragment, useState, useEffect, useMemo, useContext } from 'react';
+import { UserContext } from '../context/user.context';
 import { Col, Container } from 'react-bootstrap';
-import { auth } from '../auth/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
 
 import FormHandler from './adminComponents/FormHandler';
 import CurrentRecipes from './adminComponents/CurrentRecipes';
@@ -11,6 +10,8 @@ import useFetchComments from '../util_hook/useFetchComments';
 import classes from './_admin.module.scss';
 
 const Admin = () => {
+
+    const { user } = useContext(UserContext);
 
     const [isShow, setIsShow] = useState(true);
     const [formIsShow, setFormIsShow] = useState(false);
@@ -57,30 +58,17 @@ const Admin = () => {
         setCommentsShow(false);
     }
 
-    const [userAuth, setUserAuth] = useState(null);
-
-    useEffect(() => {
-        const listen = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUserAuth(user)
-            } else {
-                setUserAuth(null)
-            }
-        });
-        return () => {
-            listen()
-        }
-    }, []);
+    const userEmail = user._profile.data.email;
 
     return (
         <Fragment>
             <h1 className={classes.title}>Area Amministratore</h1>
-            {!userAuth && <h2 className={classes.errorText}>Non hai i permessi per accedere!</h2>}
-            {userAuth && (
+            {!user && <h2 className={classes.errorText}>Non hai i permessi per accedere!</h2>}
+            {user && (
                 <>
                     {isShow &&
                         <Container>
-                            <h2 className={classes.title}>Benvenuto {userAuth.email}</h2>
+                            <h2 className={classes.title}>Benvenuto {userEmail}</h2>
                             <div className={classes.admirPage}>
                                 <Col className={classes.admirCol}>
                                     <h4>Vedi tutte le Ricette</h4>

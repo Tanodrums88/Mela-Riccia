@@ -1,6 +1,5 @@
-import { Fragment, useState, useEffect } from "react";
-import { auth } from '../auth/firebase';
-import { onAuthStateChanged } from "firebase/auth";
+import { useContext } from "react";
+import { UserContext } from "../context/user.context";
 
 
 import LogoHeader from "./header_components/logoHeader";
@@ -13,35 +12,22 @@ import classes from './_Header.module.scss';
 
 function Header() {
 
-    const [userAuth, setUserAuth] = useState(null);
-
-    useEffect(() => {
-        const listen = onAuthStateChanged(auth, (user) => {
-            if (user) {
-                setUserAuth(user)
-            } else {
-                setUserAuth(null)
-            }
-        });
-        return () => {
-            listen()
-        }
-    }, []);
+    const { user } = useContext(UserContext);
 
     return (
-        <Fragment>
+        <>
             <header className={classes.header} id="header">
                 <div className={classes.headerContent}>
                     <div className={classes.headerFirstSection}>
                         <LogoHeader />
-                        {userAuth && <AdminMode />}
+                        {user && <AdminMode />}
                         <SearchBar />
                     </div>
                     <ListHeader />
                 </div>
             </header>
             <Wrapper />
-        </Fragment>
+        </>
     )
 };
 

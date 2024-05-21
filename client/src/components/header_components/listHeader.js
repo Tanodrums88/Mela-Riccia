@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import useStateAuth from '../../auth/StateAuth';
+import { UserContext } from '../../context/user.context';
 
 import Logout from '../../auth/Logout';
 
@@ -10,7 +10,7 @@ import * as Icon from 'react-bootstrap-icons';
 
 function ListHeader() {
 
-    const { userAuth } = useStateAuth();
+    const { user } = useContext(UserContext);
 
     const [isShow1, setIsShow1] = useState(false);
     const [isShow2, setIsShow2] = useState(false);
@@ -108,8 +108,8 @@ function ListHeader() {
                     >Tutte le Ricette
                     </NavLink></li>
                 <li onClick={() => setHamburgenIsOpen(false)}><Link onClick={handleScroll}>Contatti</Link></li>
-                {/* <li onClick={() => setHamburgenIsOpen(false)}>{!userAuth ? <Link to={'http://localhost:5000/auth/google'}><Icon.LockFill /></Link> : <Link to={'/Admin'}>Admin</Link>}</li>
-                {userAuth && <Logout />} */}
+                <li onClick={() => setHamburgenIsOpen(false)}>{!user ? <Link to={'/Auth'}><Icon.LockFill /></Link> : <Link to={'/Admin'}>Admin</Link>}</li>
+                {user && <Logout />}
             </ul>
         </>
     )//<Link to={'/Auth'}><Icon.LockFill /></Link> // creare funzione get e aggiungerlo al pulsante login
