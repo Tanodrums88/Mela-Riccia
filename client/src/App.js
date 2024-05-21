@@ -13,26 +13,6 @@ import FormUsers from './pages/home_components/FormUsers';
 import Login from './auth/Login';
 import PrivateRoute from './auth/PrivateRoute';
 
-// const router = createBrowserRouter([
-//   {
-//     path: '/',
-//     element: <RootLayot />,
-//     children: [
-//       { path: '/', index: true, element: <HomePage /> },
-//       { path: '/invia la ricetta', element: <FormUsers /> },
-//       { path: '/tutte le ricette', element: <AllRecipes /> },
-//       { path: '/:recipesCategoryID', element: <CategoryRecipes /> },
-//       { path: '/:recipesCategoryID/:recipesSubCategoryID', element: <SubCategoryRecipes /> },
-//       { path: '/:recipesCategoryID/:recipesSubCategoryID/:recipeNameID', element: <SingleRecipe /> },
-
-//     ],
-//   },
-//   <UserProvider>
-//         { path: '/Admin', element: <Admin /> },
-//       { path: '/Auth', element: <Login /> }
-//       </UserProvider>
-// ]);
-
 function App() {
 
   return (
@@ -54,7 +34,6 @@ function App() {
         </Routes>
       </UserProvider>
     </BrowserRouter>
-    // <RouterProvider router={router} />
   );
 }
 
