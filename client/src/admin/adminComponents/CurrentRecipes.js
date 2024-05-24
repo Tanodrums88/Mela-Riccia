@@ -5,7 +5,7 @@ import * as Icon from 'react-bootstrap-icons';
 import useFetchRecipes from '../../util_hook/useFetchRecipes';
 import SpinnerLoading from '../../ui/Spinner';
 
-import ModalDelete from './modalDelete';
+import DeleteRecipe from './DeleteRecipe';
 import ModalEdit from './modalEdit';
 import Graphic from './graphicComponents/Graphic';
 import GraphicSub from './graphicComponents/GraphicSub';
@@ -78,7 +78,7 @@ function CurrentRecipes() {
                     {content}
                 </>
             )}
-            {isDelete && <ModalDelete closeModal={closeModal} select={isSelect} />}
+            {isDelete && <DeleteRecipe closeModal={closeModal} select={isSelect} />}
             {isEdit && <ModalEdit closeModal={closeModal} select={isSelect} />}
         </Container>
     );

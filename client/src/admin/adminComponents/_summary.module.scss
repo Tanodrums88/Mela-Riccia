@@ -30,3 +30,7 @@
     color: green;
   }
 }
+
+.button {
+  @include btn-page;
+}

@@ -1,12 +1,12 @@
-import { Modal } from 'react-bootstrap';
 import { useState } from 'react';
 
 import SpinnerLoading from '../../ui/Spinner';
 
 import classes from '../_admin.module.scss';
 import ErrorPage from '../../ui/ErrorPage';
+import ModalWrapper from '../../ui/Modal';
 
-function ModalDeleteComment(props) {
+function DeleteComment(props) {
     const [isDelete, setIsDelete] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(null);
@@ -16,7 +16,7 @@ function ModalDeleteComment(props) {
 
     const url = `http://localhost:5000/reviews/${itemId}`
 
-    async function deleteRecipe() {
+    async function deleteReview() {
         setIsLoading(true);
         setIsError(null);
         try {
@@ -35,22 +35,13 @@ function ModalDeleteComment(props) {
     let content;
 
     if (!isDelete) {
-        content =
-            <Modal.Dialog>
-                <Modal.Header closeButton onClick={props.closeModal}>
-                    <Modal.Title>Annulla o Conferma</Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>
-                    <p>Sei sicuro di voler cancellare la recensione di <b>{itemName}</b>?</p>
-                    <p>id elemento n° {itemId}</p>
-                </Modal.Body>
-
-                <Modal.Footer>
-                    <button className={classes.buttonConfirm} onClick={props.closeModal}>Annulla</button>
-                    <button className={classes.buttonConfirm} onClick={deleteRecipe}>Conferma</button>
-                </Modal.Footer>
-            </Modal.Dialog>
+        content = <ModalWrapper
+            closeModal={props.closeModal}
+            obj={"recensione di"}
+            name={itemName}
+            id={itemId}
+            confirm={deleteReview}
+        />
     }
 
     if (isLoading) {
@@ -73,4 +64,4 @@ function ModalDeleteComment(props) {
     );
 }
 
-export default ModalDeleteComment;
+export default DeleteComment;

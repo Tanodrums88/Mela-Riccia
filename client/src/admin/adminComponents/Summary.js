@@ -1,8 +1,9 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useState } from "react";
 
 import SpinnerLoading from "../../ui/Spinner";
 import ErrorPage from "../../ui/ErrorPage";
+import SummaryWrapper from "../../ui/SummaryWrapper";
 
 import classes from './_summary.module.scss';
 
@@ -11,24 +12,26 @@ const Summary = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const name = props.items.name;
-    const cooked = props.items.cooked;
-    const image = props.items.image;
-    const category = props.items.category;
-    const sub_category = props.items.sub_category;
-    const ingredients = props.items.ingredients;
-    const description = props.items.description;
-    const preparation = props.items.preparation;
+    const item = {
+        name: props.items.name,
+        cooked: props.items.cooked,
+        image: props.items.image,
+        category: props.items.category,
+        sub_category: props.items.sub_category,
+        ingredients: props.items.ingredients,
+        description: props.items.description,
+        preparation: props.items.preparation,
+    }
 
     const newRecipe = {
-        name: name,
-        cooked: cooked,
-        image: image,
-        category: category,
-        sub_category: sub_category,
-        ingredients: ingredients,
-        description: description,
-        preparation: preparation
+        name: item.name,
+        cooked: item.cooked,
+        image: item.image,
+        category: item.category,
+        sub_category: item.sub_category,
+        ingredients: item.ingredients,
+        description: item.description,
+        preparation: item.preparation
     }
 
     const url = 'http://localhost:5000/recipes';
@@ -60,39 +63,12 @@ const Summary = (props) => {
     let content;
 
     if (!isSent) {
-        content =
-            <>
-                <h1>Riepilogo dati inseriti</h1>
-                <Row className={classes.row}>
-                    <Col><h3>Nome Ricetta: {name}</h3></Col>
-                    <Col><h3>Chi la preparato: {cooked}</h3></Col>
-                </Row>
-                <Row className={classes.row}>
-                    <Col><img src={image} alt={name} /></Col>
-                    <Col>
-                        <ul>Ingredienti:
-                            {ingredients.map((e, index) => (
-                                <li key={index}>{e}</li>
-                            ))}
-                        </ul>
-                    </Col>
-                    <Col>
-                        <Row><p>Categoria: {category}</p></Row>
-                        <Row><p>Sotto Categoria: {sub_category}</p></Row>
-                    </Col>
-                </Row>
-
-                <Row className={classes.row}>
-                    <Col><p>Descrizione: {description}</p></Col>
-                </Row>
-                <Row className={classes.row}>
-                    <Col><p>Preparazione: {preparation}</p></Col>
-                </Row>
-                <div className={classes.buttonGroup}>
-                    <button onClick={props.onBack}>Annulla</button>
-                    <button onClick={addRecipeHandler}>Conferma</button>
-                </div>
-            </>
+        content = <SummaryWrapper
+            user={false}
+            data={item}
+            back={props.onBack}
+            confirm={addRecipeHandler}
+        />
     }
     if (isLoading) {
         content = <SpinnerLoading />

@@ -1,7 +1,7 @@
 import { Fragment, useState, useEffect, useMemo, useContext } from 'react';
 import { UserContext } from '../context/user.context';
-import { Col, Container } from 'react-bootstrap';
 
+import AdminHome from './adminComponents/AdminHome';
 import FormHandler from './adminComponents/FormHandler';
 import CurrentRecipes from './adminComponents/CurrentRecipes';
 import CommentsPresent from './adminComponents/CommentsPresent';
@@ -9,7 +9,7 @@ import useFetchComments from '../util_hook/useFetchComments';
 
 import classes from './_admin.module.scss';
 
-const Admin = () => {
+const AdminHandler = () => {
 
     const { user } = useContext(UserContext);
 
@@ -67,24 +67,14 @@ const Admin = () => {
             {user && (
                 <>
                     {isShow &&
-                        <Container>
-                            <h2 className={classes.title}>Benvenuto {userEmail}</h2>
-                            <div className={classes.admirPage}>
-                                <Col className={classes.admirCol}>
-                                    <h4>Vedi tutte le Ricette</h4>
-                                    <button className={classes.btnForm} onClick={navigateCurrent}>Naviga</button>
-                                </Col>
-                                <Col className={classes.admirCol}>
-                                    <h4>Aggiungi una nuova Ricetta</h4>
-                                    <button className={classes.btnForm} onClick={navigateAdd}>Naviga</button>
-                                </Col>
-                                <Col className={classes.admirCol}>
-                                    <h4>Gestisci le recensioni</h4>
-                                    {badgeIsShow && <div className={classes.badgeReview}>{unapprovedReviews}</div>}
-                                    <button className={classes.btnForm} onClick={navigateComments}>Naviga</button>
-                                </Col>
-                            </div>
-                        </Container>
+                        <AdminHome
+                            userEmail={userEmail}
+                            navigateAdd={navigateAdd}
+                            navigateCurrent={navigateCurrent}
+                            navigateComments={navigateComments}
+                            unapprovedReviews={unapprovedReviews}
+                            badgeIsShow={badgeIsShow}
+                        />
                     }
                     {formIsShow && <FormHandler />}
                     {currentIsShow && <CurrentRecipes />}
@@ -100,4 +90,4 @@ const Admin = () => {
     )
 };
 
-export default Admin;
+export default AdminHandler;

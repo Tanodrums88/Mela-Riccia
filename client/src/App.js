@@ -8,7 +8,7 @@ import AllRecipes from './pages/AllRecipes';
 import CategoryRecipes from './pages/categoryRecipes/categoryRecipes';
 import SubCategoryRecipes from './pages/categoryRecipes/subCategoryRecipes';
 import SingleRecipe from './pages/singleRecipes/singleRecipe';
-import Admin from './admin/Admin';
+import Admin from './admin/AdminHandler';
 import FormUsers from './pages/home_components/FormUsers';
 import Login from './auth/Login';
 import PrivateRoute from './auth/PrivateRoute';

@@ -6,7 +6,7 @@ import * as Icon from 'react-bootstrap-icons';
 import useFetchComments from '../../util_hook/useFetchComments';
 
 import SpinnerLoading from '../../ui/Spinner';
-import ModalDeleteComment from './modalDeleteComment';
+import DeleteComment from './DeleteComment';
 import ModalApprovalComment from './modalApprovalComment';
 
 import classes from '../_admin.module.scss';
@@ -82,7 +82,7 @@ function CommentsPresent() {
                     {content}
                 </>
             )}
-            {isDelete && <ModalDeleteComment closeModal={closeModal} select={isSelect} />}
+            {isDelete && <DeleteComment closeModal={closeModal} select={isSelect} />}
             {isApproval && <ModalApprovalComment closeModal={closeModal} select={isSelect} />}
         </Container>
     )
