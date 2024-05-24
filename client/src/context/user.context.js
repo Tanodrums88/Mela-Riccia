@@ -9,11 +9,14 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const emailPasswordLogin = async (email, password) => {
+        setIsLoading(true);
         const credentials = Credentials.emailPassword(email, password);
         const authenticatedUser = await app.logIn(credentials);
         setUser(authenticatedUser);
+        setIsLoading(false);
         return authenticatedUser;
     };
 
@@ -39,7 +42,7 @@ export const UserProvider = ({ children }) => {
         }
     }
 
-    return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, logOutUser }}>
+    return <UserContext.Provider value={{ user, setUser, fetchUser, emailPasswordLogin, logOutUser, isLoading }}>
         {children}
     </UserContext.Provider>;
 }

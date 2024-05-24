@@ -12,12 +12,10 @@ function Login() {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { user, fetchUser, emailPasswordLogin } = useContext(UserContext);
+    const { user, fetchUser, emailPasswordLogin, isLoading } = useContext(UserContext);
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    const [isLoading, setIsLoading] = useState(false);
     const [IsError, setIsError] = useState(null);
 
     const redirectNow = () => {
@@ -40,16 +38,12 @@ function Login() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        setIsLoading(true)
         try {
-            setIsLoading(false);
             const user = await emailPasswordLogin(email, password);
             if (user) {
                 redirectNow();
             }
-
         } catch (error) {
-            setIsLoading(false);
             if (error.statusCode === 401) {
                 setIsError(error);
             } else {
