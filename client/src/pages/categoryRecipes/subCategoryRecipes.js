@@ -9,6 +9,7 @@ import CardLoading from "../../ui/cardLoading";
 import BackButton from "../../ui/BackButton";
 import Wrapper from "../../ui/wrapper";
 import ErrorPage from "../../ui/ErrorPage";
+import IngredientsAccordion from "../../ui/AccordionCardsIngredients";
 
 import classes from './_categoryRecipes.module.scss';
 
@@ -33,7 +34,7 @@ const SubCategoryRecipes = () => {
 
     if (RECIPES.length > 0) {
         content =
-            <Container>
+            <Container fluid="md">
                 <h1>La Categoria {data}</h1>
                 <Row xs={1} sm={2} md={3} lg={3} className="g-4">
                     {RECIPES.map((recipe) => (
@@ -43,13 +44,11 @@ const SubCategoryRecipes = () => {
                                 <Card.Body>
                                     <Card.Title className={classes.cardTitle}>{recipe.name}</Card.Title>
                                     <Card.Text as="div">
-                                        <p className={classes.ingredientsTitle}>Ingredienti:</p>
-                                        <ul>
-                                            {recipe.ingredients.map((item, index) => (
+                                        <IngredientsAccordion
+                                            items={recipe.ingredients.map((item, index) => (
                                                 <li key={index}>{item}</li>
-                                            ))
-                                            }
-                                        </ul>
+                                            ))}
+                                        />
                                     </Card.Text>
                                     <Link to={`/${recipe.category}/${recipe.sub_category}/${recipe.name}`} className={classes.btnCard}>Vai alla ricetta</Link>
                                 </Card.Body>

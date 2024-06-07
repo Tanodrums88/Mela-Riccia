@@ -34,30 +34,6 @@ function AllRecipes() {
         DolciSenzaCottura: false
     });
 
-    // if (dataSubCategory.Altri_Primi) {
-    //     return "Altri Primi"
-    // }
-
-    /**
-     *    const [dataCategory, setDataCategory] = useState({
-        Primi: { checked: false, value: "Primi" },
-        Secondi: { checked: false, value: "Secondi" },
-        Contorni: { checked: false, value: "Contorni" },
-        Dolci: { checked: false, value: "Dolci" }
-    });
-
-    const [dataSubCategory, setDataSubCategory] = useState({
-        Pasta: { checked: false, value: "Pasta" },
-        Risotti: { checked: false, value: "Risotti" },
-        AltriPrimi: { checked: false, value: "Altri Primi" },
-        SecondiDiCarne: { checked: false, value: "Secondi di Carne" },
-        SecondiDiPesce: { checked: false, value: "Secondi di Pesce" },
-        SecondiVegetariani: { checked: false, value: "Secondi Vegetariani" },
-        DolciConCottura: { checked: false, value: "Dolci con Cottura" },
-        DolciSenzaCottura: { checked: false, value: "Dolci senza Cottura" }
-    });
-     */
-
     const allFiltersFalse = () => {
         return Object.values(dataSubCategory || dataCategory).every(value => value === false);
     };
@@ -103,5 +79,3 @@ function AllRecipes() {
     )
 }
 export default AllRecipes;
-
-// theChekedSub_Category={setDataSub_Category}

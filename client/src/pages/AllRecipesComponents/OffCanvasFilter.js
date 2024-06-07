@@ -14,12 +14,6 @@ function FilteroffCanvas(props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // const sub_category = [
-    //     "Pasta", "Risotti", "Altri Primi",
-    //     "Secondi di Carne", "Secondi di Pesce", "Secondi Vegetariani",
-    //     "Dolci con Cottura", "Dolci senza Cottura"
-    // ];
-
     const [toCheckCategory, setToCheckCategory] = useState({
         Primi: false,
         Secondi: false,
