@@ -23,11 +23,46 @@ function AllRecipes() {
         Dolci: false
     });
 
+    const [dataSubCategory, setDataSubCategory] = useState({
+        Pasta: false,
+        Risotti: false,
+        Altri_Primi: false,
+        SecondiDiCarne: false,
+        SecondiDiPesce: false,
+        SecondiVegetariani: false,
+        DolciConCottura: false,
+        DolciSenzaCottura: false
+    });
+
+    // if (dataSubCategory.Altri_Primi) {
+    //     return "Altri Primi"
+    // }
+
+    /**
+     *    const [dataCategory, setDataCategory] = useState({
+        Primi: { checked: false, value: "Primi" },
+        Secondi: { checked: false, value: "Secondi" },
+        Contorni: { checked: false, value: "Contorni" },
+        Dolci: { checked: false, value: "Dolci" }
+    });
+
+    const [dataSubCategory, setDataSubCategory] = useState({
+        Pasta: { checked: false, value: "Pasta" },
+        Risotti: { checked: false, value: "Risotti" },
+        AltriPrimi: { checked: false, value: "Altri Primi" },
+        SecondiDiCarne: { checked: false, value: "Secondi di Carne" },
+        SecondiDiPesce: { checked: false, value: "Secondi di Pesce" },
+        SecondiVegetariani: { checked: false, value: "Secondi Vegetariani" },
+        DolciConCottura: { checked: false, value: "Dolci con Cottura" },
+        DolciSenzaCottura: { checked: false, value: "Dolci senza Cottura" }
+    });
+     */
+
     const allFiltersFalse = () => {
-        return Object.values(dataCategory).every(value => value === false);
+        return Object.values(dataSubCategory || dataCategory).every(value => value === false);
     };
 
-    let recipeIsFilterder = allFiltersFalse() ? recipesApi : recipesApi.filter((recipe) => dataCategory[recipe.category]);
+    let recipeIsFilterder = allFiltersFalse() ? recipesApi : recipesApi.filter((recipe) => dataSubCategory[recipe.sub_category] || dataCategory[recipe.category]);
 
     let content;
 
@@ -58,6 +93,7 @@ function AllRecipes() {
                     <h1>Cerca tra tutte le ricette</h1>
                     <FilteroffCanvas
                         theChekedCategory={setDataCategory}
+                        theChekedSubCategory={setDataSubCategory}
                     />
                 </div>
                 {content}

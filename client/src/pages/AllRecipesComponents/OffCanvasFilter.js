@@ -3,7 +3,8 @@ import { Offcanvas, Form } from 'react-bootstrap';
 import * as Icon from 'react-bootstrap-icons';
 
 import classes from '../_AllRecipes.module.scss';
-import CheckBox from './CheckBox';
+import CheckBoxsCategory from './CheckBoxsCategory';
+import CheckBoxsSubCategory from './CheckBoxsSubCategory';
 
 function FilteroffCanvas(props) {
 
@@ -26,11 +27,26 @@ function FilteroffCanvas(props) {
         Dolci: false
     });
 
+    const [toCheckSubCategory, setToCheckSubCategory] = useState({
+        Pasta: false,
+        Risotti: false,
+        Altri_Primi: false,
+        Secondi_Di_Carne: false,
+        Secondi_Di_Pesce: false,
+        Secondi_Vegetariani: false,
+        Dolci_Con_Cottura: false,
+        Dolci_Senza_Cottura: false
+    });
+
     const filterHandler = (event) => {
         setToCheckCategory({
             ...toCheckCategory,
             [event.target.value]: event.target.checked
         });
+        setToCheckSubCategory({
+            ...toCheckSubCategory,
+            [event.target.value]: event.target.checked
+        })
         setFilterIsActive(true);
     };
 
@@ -41,11 +57,22 @@ function FilteroffCanvas(props) {
             Contorni: false,
             Dolci: false
         });
+        setToCheckSubCategory({
+            Pasta: false,
+            Risotti: false,
+            AltriPrimi: false,
+            SecondiDiCarne: false,
+            SecondiDiPesce: false,
+            SecondiVegetariani: false,
+            DolciConCottura: false,
+            DolciSenzaCottura: false
+        })
         setFilterIsActive(false);
     };
 
     useEffect(() => {
         props.theChekedCategory(toCheckCategory);
+        props.theChekedSubCategory(toCheckSubCategory);
     });
 
     return (
@@ -65,25 +92,16 @@ function FilteroffCanvas(props) {
                 <Offcanvas.Body>
                     <h4>Categorie</h4>
                     <Form.Group className={classes.checkBoxes}>
-                        <CheckBox
+                        <CheckBoxsCategory
                             toCheckCategory={toCheckCategory}
                             control={filterHandler}
                         />
                     </Form.Group>
-                    {/* <h4>Sotto Categorie</h4>
-                    <Form.Group className={classes.checkBoxes}>
-                        {sub_category.map((e, index) => (
-                            <Form.Check
-                                key={index}
-                                className={classes.formCheck}
-                                type="switch"
-                                id={e}
-                                label={e}
-                                value={e}
-                                onChange={(e) => changeFilterSub_Category(e.target.value)}
-                            />
-                        ))}
-                    </Form.Group> */}
+                    <h4>Sotto Categorie</h4>
+                    <CheckBoxsSubCategory
+                        toCheckCategory={toCheckSubCategory}
+                        control={filterHandler}
+                    />
                 </Offcanvas.Body>
             </Offcanvas>
         </>

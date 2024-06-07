@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 
 import classes from '../_AllRecipes.module.scss';
 
-function CheckBox({ toCheckCategory, control }) {
+function CheckBoxsCategory({ toCheckCategory, control }) {
     return (
         <>
             <Form.Check
@@ -46,4 +46,4 @@ function CheckBox({ toCheckCategory, control }) {
     )
 }
 
-export default CheckBox;
+export default CheckBoxsCategory;
